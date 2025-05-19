@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurav Madake Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .section {
+            padding: 4rem 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        .card {
+            background-color: #1e293b;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .skill-pill {
+            background-color: #1e293b;
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            display: inline-block;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #3b82f6;
+        }
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: 0.5rem;
+            top: 1.5rem;
+            width: 1px;
+            height: calc(100% + 1rem);
+            background-color: #3b82f6;
+        }
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .animated-bg::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.05) 50%, transparent 70%);
+            top: -50%;
+            left: -50%;
+            animation: rotate 60s linear infinite;
+        }
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #e2e8f0;
+            text-decoration: none;
+        }
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .custom-shape {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+            z-index: -1;
+            animation: morph 15s linear infinite;
+        }
+        @keyframes morph {
+            0%, 100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+            25% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+            50% {
+                border-radius: 30% 70% 70% 30% / 70% 30% 30% 70%;
+            }
+            75% {
+                border-radius: 70% 30% 30% 70% / 30% 70% 70% 30%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <!-- Header/Navigation -->
+    <header class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-lg z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold">
+                    <span class="gradient-text">Saurav Madake</span>
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </nav>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="section pt-24 pb-16 relative overflow-hidden">
+        <div class="custom-shape top-20 right-20"></div>
+        <div class="custom-shape bottom-20 left-20"></div>
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        Hi, I'm <span class="gradient-text">Saurav Madake</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-300">
+                        Software Developer & UX Designer
+                    </p>
+                    <p class="text-gray-400 mb-8 max-w-md">
+                        Building innovative web applications and creating seamless user experiences. 
+                        Passionate about clean code, modern design, and cutting-edge technologies.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn btn-primary">
+                            Get in Touch
+                        </a>
+                        <a href="#projects" class="btn bg-gray-800 text-white hover:bg-gray-700">
+                            See My Work
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-2 rounded-full bg-gray-900 flex items-center justify-center text-6xl">
+                            <span class="font-bold gradient-text">SM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                About <span class="gradient-text">Me</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <div class="relative">
+                        <div class="w-full h-64 md:h-96 bg-gray-800 rounded-lg flex items-center justify-center text-4xl">
+                            <span class="gradient-text font-bold">About Image</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-10">
+                    <p class="text-gray-300 mb-6">
+                        I'm a passionate software developer with expertise in full-stack web development and UX design. With over 5 years of experience, I've worked on various projects from small business websites to complex enterprise applications.
+                    </p>
+                    <p class="text-gray-300 mb-6">
+                        My goal is to create beautiful, functional, and user-friendly applications that solve real-world problems. I'm constantly learning and adapting to new technologies to stay at the forefront of web development.
+                    </p>
+                    <div class="flex flex-wrap mb-6">
+                        <div class="w-1/2 mb-4">
+                            <p class="text-gray-400">Name:</p>
+                            <p class="font-medium">Saurav Madake</p>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <p class="text-gray-400">Email:</p>
+                            <p class="font-medium">contact@sauravmadake.com</p>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <p class="text-gray-400">Location:</p>
+                            <p class="font-medium">Mumbai, India</p>
+                        </div>
+                        <div class="w-1/2 mb-4">
+                            <p class="text-gray-400">Availability:</p>
+                            <p class="font-medium">Open to opportunities</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                My <span class="gradient-text">Projects</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="card">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center text-2xl">
+                        <span class="gradient-text font-medium">Project Image</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">E-commerce Platform</h3>
+                        <p class="text-gray-400 mb-4">
+                            A full-featured online shopping platform with payment integration, user authentication, and product management.
+                        </p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="text-xs bg-blue-900 text-blue-200 px-2 py-1 rounded mr-2 mb-2">React</span>
+                            <span class="text-xs bg-green-900 text-green-200 px-2 py-1 rounded mr-2 mb-2">Node.js</span>
+                            <span class="text-xs bg-purple-900 text-purple-200 px-2 py-1 rounded mr-2 mb-2">MongoDB</span>
+                        </div>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 inline-block">
+                            View Project <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="card">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center text-2xl">
+                        <span class="gradient-text font-medium">Project Image</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Task Management App</h3>
+                        <p class="text-gray-400 mb-4">
+                            A responsive task management application with real-time updates, team collaboration, and progress tracking.
+                        </p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="text-xs bg-blue-900 text-blue-200 px-2 py-1 rounded mr-2 mb-2">Vue.js</span>
+                            <span class="text-xs bg-yellow-900 text-yellow-200 px-2 py-1 rounded mr-2 mb-2">Firebase</span>
+                            <span class="text-xs bg-red-900 text-red-200 px-2 py-1 rounded mr-2 mb-2">Tailwind CSS</span>
+                        </div>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 inline-block">
+                            View Project <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="card">
+                    <div class="h-48 bg-gray-800 flex items-center justify-center text-2xl">
+                        <span class="gradient-text font-medium">Project Image</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">AI Content Generator</h3>
+                        <p class="text-gray-400 mb-4">
+                            A web application that utilizes machine learning to generate content for blogs, social media, and marketing materials.
+                        </p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="text-xs bg-blue-900 text-blue-200 px-2 py-1 rounded mr-2 mb-2">Python</span>
+                            <span class="text-xs bg-gray-900 text-gray-200 px-2 py-1 rounded mr-2 mb-2">TensorFlow</span>
+                            <span class="text-xs bg-green-900 text-green-200 px-2 py-1 rounded mr-2 mb-2">Flask</span>
+                        </div>
+                        <a href="#" class="text-blue-400 hover:text-blue-300 inline-block">
+                            View Project <i class="fas fa-arrow-right ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="#" class="btn bg-gray-800 text-white hover:bg-gray-700">
+                    View All Projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                My <span class="gradient-text">Skills</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Technical Skills</h3>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Frontend Development</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Backend Development</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">UI/UX Design</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <div class="flex justify-between mb-2">
+                            <span class="font-medium">Database Management</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Technologies -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Technologies</h3>
+                    <div class="flex flex-wrap">
+                        <div class="skill-pill">HTML & CSS</div>
+                        <div class="skill-pill">JavaScript</div>
+                        <div class="skill-pill">TypeScript</div>
+                        <div class="skill-pill">React</div>
+                        <div class="skill-pill">Vue.js</div>
+                        <div class="skill-pill">Angular</div>
+                        <div class="skill-pill">Node.js</div>
+                        <div class="skill-pill">Express</div>
+                        <div class="skill-pill">Python</div>
+                        <div class="skill-pill">Django</div>
+                        <div class="skill-pill">Flask</div>
+                        <div class="skill-pill">PHP</div>
+                        <div class="skill-pill">Laravel</div>
+                        <div class="skill-pill">MySQL</div>
+                        <div class="skill-pill">PostgreSQL</div>
+                        <div class="skill-pill">MongoDB</div>
+                        <div class="skill-pill">Redis</div>
+                        <div class="skill-pill">Docker</div>
+                        <div class="skill-pill">AWS</div>
+                        <div class="skill-pill">Firebase</div>
+                        <div class="skill-pill">Git</div>
+                        <div class="skill-pill">CI/CD</div>
+                        <div class="skill-pill">Figma</div>
+                        <div class="skill-pill">Adobe XD</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Work <span class="gradient-text">Experience</span>
+            </h2>
+            <div class="max-w-3xl mx-auto">
+                <!-- Experience Item 1 -->
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <span class="text-sm text-blue-400">2022 - Present</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Senior Frontend Developer</h3>
+                    <p class="text-gray-400 mb-3">TechInnovate Solutions</p>
+                    <p class="text-gray-300">
+                        Led the frontend development team in building responsive web applications. 
+                        Implemented modern JavaScript frameworks and improved performance optimization resulting in a 40% increase in page load speed.
+                    </p>
+                </div>
+                
+                <!-- Experience Item 2 -->
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <span class="text-sm text-blue-400">2020 - 2022</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Full Stack Developer</h3>
+                    <p class="text-gray-400 mb-3">Digital Creators Inc.</p>
+                    <p class="text-gray-300">
+                        Developed and maintained web applications using React.js and Node.js. 
+                        Collaborated with cross-functional teams to design and implement new features.
+                    </p>
+                </div>
+                
+                <!-- Experience Item 3 -->
+                <div class="timeline-item">
+                    <div class="mb-2">
+                        <span class="text-sm text-blue-400">2018 - 2020</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-1">Web Developer</h3>
+                    <p class="text-gray-400 mb-3">StartUp Vision</p>
+                    <p class="text-gray-300">
+                        Built responsive websites and integrated third-party APIs.
+                        Worked on improving user experience and implementing analytics tools.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-16 bg-gray-900 bg-opacity-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <p class="text-gray-300 mb-8">
+                        Feel free to reach out to me for any inquiries, collaborations, or just to say hello!
+                        I'm always open to discussing new projects and opportunities.
+                    </p>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope text-blue-300"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400">Email</p>
+                            <p class="font-medium">contact@sauravmadake.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-phone text-blue-300"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400">Phone</p>
+                            <p class="font-medium">+91 9876543210</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center mr-4">
+                            <i class="fas fa-map-marker-alt text-blue-300"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-400">Location</p>
+                            <p class="font-medium">Mumbai, Maharashtra, India</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-900 flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in text-gray-300 hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-900 flex items-center justify-center transition-colors">
+                            <i class="fab fa-github text-gray-300 hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-900 flex items-center justify-center transition-colors">
+                            <i class="fab fa-twitter text-gray-300 hover:text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-blue-900 flex items-center justify-center transition-colors">
+                            <i class="fab fa-dribbble text-gray-300 hover:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-800 rounded-lg p-6">
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Your Name</label>
+                                <input type="text" id="name" class="w-full bg-gray-700 border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="John Doe">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full bg-gray-700 border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="john@example.com">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full bg-gray-700 border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Project Inquiry">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                                <textarea id="message" rows="5" class="w-full bg-gray-700 border-0 rounded-lg p-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn btn-primary">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-400">© 2025 Saurav Madake. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="#home" class="text-gray-400 hover:text-white">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white">About</a>
+                    <a href="#projects" class="text-gray-400 hover:text-white">Projects</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const menuButton = document.querySelector('.md\\:hidden button');
+        const mobileMenu = document.createElement('div');
+        
+        mobileMenu.classList.add('mobile-menu', 'fixed', 'inset-0', 'bg-gray-900', 'bg-opacity-95', 'z-50', 'flex', 'flex-col', 'items-center', 'justify-center', 'hidden');
+        
+        document.body.appendChild(mobileMenu);
+        
+        const menuLinks = [
+            { href: '#home', text: 'Home' },
+            { href: '#about', text: 'About' },
+            { href: '#projects', text: 'Projects' },
+            { href: '#skills', text: 'Skills' },
+            { href: '#experience', text: 'Experience' },
+            { href: '#contact', text: 'Contact' }
+        ];
+        
+        menuLinks.forEach(link => {
+            const a = document.createElement('a');
+            a.href = link.href;
+            a.textContent = link.text;
+            a.classList.add('text-white', 'text-xl', 'mb-4', 'hover:text-blue-400');
+            
+            a.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+            
+            mobileMenu.appendChild(a);
+        });
+        
+        const closeButton = document.createElement('button');
+        closeButton.innerHTML = '<i class="fas fa-times"></i>';
+        closeButton.classList.add('absolute', 'top-8', 'right-8', 'text-white', 'text-2xl');
+        
+        closeButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+        
+        mobileMenu.appendChild(closeButton);
+        
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
